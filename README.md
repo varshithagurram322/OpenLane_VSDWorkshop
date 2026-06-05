@@ -73,10 +73,15 @@ GDSII Generation
 
 #Learning Outcomes
 1.Understanding complete ASIC design flow
+
 2.Working with Sky130 Process Design Kit
+
 3.Performing RTL-to-GDSII implementation
+
 4.Analyzing timing reports
+
 5.Implementing routing using TritonRoute
+
 6.Exploring open-source VLSI design methodologies
 
 #References
