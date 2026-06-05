@@ -363,4 +363,11 @@ run_routing
 Screenshots of routed def
 ![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef1.png?raw=true)
 ![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef2.png?raw=true)
+Screenshots of commands run and timing report generated
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/3ce6cd9da0a31908dfddf1494fa03b791b8a079d/Screenshot%20from%202026-06-05%2022-26-31.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/3ce6cd9da0a31908dfddf1494fa03b791b8a079d/Screenshot%20from%202026-06-05%2022-26-43.png)
+Acknowledgements
 
+    Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd.
+    Nickson P Jose, Physical Design Engineer, Intel Corporation.
+    R. Timothy Edwards, Senior Vice President of Analog and Design, efabless Corporation.
