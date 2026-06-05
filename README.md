@@ -245,12 +245,122 @@ Section 3 - Tasks 1 to 5 (vsdstdcelldesign)
 Screenshot of custom inverter layout in magic
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/d63a1c54e93decb74b196236da0f96879825f801/Screenshot%20from%202026-06-05%2017-23-43.png)
 polysilicon identified
-2. Load the custom inverter layout in magic and explore.
 
-Screenshot of custom inverter layout in magic
+3. Post-layout ngspice simulations.
 
-![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/nmos.png)
+Commands for ngspice simulation
+
+# Command to directly load spice file for simulation to ngspice
+ngspice sky130_inv.spice
+
+# Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+plot y vs time a
+
+Screenshots of ngspice run
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/6ee4b732be39e9f1b3385c3acaba64d2e47a86f6/waveform.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/6ee4b732be39e9f1b3385c3acaba64d2e47a86f6/82waveform.png)
+20% Screenshots
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/03f73bc391d8093159ee96e6e106a2af353d1f22/20waveform.png)
+6. Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
+
+Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
+
+Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
+# Change to home directory
+cd
+
+# Command to download the lab files
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+# Since lab file is compressed command to extract it
+tar xfz drc_tests.tgz
+
+# Change directory into the lab folder
+cd drc_tests
+
+# List all files and directories present in the current directory
+ls -al
+
+# Command to view .magicrc file
+gvim .magicrc
+
+# Command to open magic tool in better graphics
+magic -d XR &
+Screenshot of .magicrc file
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/fc5710a01ba9ee0bd613a21f2e8f3970b6e281b5/magicrc.png)
+Incorrectly implemented difftap.2 simple rule correction
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/910a48c68aa2ca1d39ea91c37f5c969d8e9dddfb/incorrectpoly.png)
+
+Section 4 - Pre-layout timing analysis and importance of good clock tree
+Theory
+Implementation
+
+    Section 4 tasks:-
+
+    Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+    Save the finalized layout with custom name and open it.
+    Generate lef from the layout.
+    Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+    Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+    Run openlane flow synthesis with newly inserted custom inverter cell.
+    Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+    Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
+    Do Post-Synthesis timing analysis with OpenSTA tool.
+    Make timing ECO fixes to remove all violations.
+    Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+    Post-CTS OpenROAD timing analysis.
+    Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+
+    Section 4 - Tasks 1 to 4 files, reports and logs can be found in the following folder:
+
+Section 4 - Tasks 1 to 4 (vsdstdcelldesign)
+
+    Section 4 - Task 4 files, reports and logs can be found in the following folder:
+
+Section 4 - Task 4 (src)
+
+    Section 4 - Task 5 files, reports and logs can be found in the following folder:
+
+Section 4 - Task 5 (picorv32a)
+
+    Section 4 - Tasks 6 to 8 & 11 to 13 logs, reports and results can be found in following run folder:
+
+Section 4 - Tasks 6 to 8 & 11 to 13 Run (24-03_10-03)
+
+    Section 4 - Tasks 9 to 11 logs, reports and results can be found in following run folder:
+
+Section 4 - Tasks 9 to 11 Run (25-03_18-52)
+1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+
+Conditions to be verified before moving forward with custom designed cell layout:
+
+    Condition 1: The input and output ports of the standard cell should lie on the intersection of the vertical and horizontal tracks.
+    Condition 2: Width of the standard cell should be odd multiples of the horizontal track pitch.
+    Condition 3: Height of the standard cell should be even multiples of the vertical track pitch.
+
+Commands to open the custom inverter layout
+
+# Change directory to vsdstdcelldesign
+cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
+
+# Command to open custom inverter layout in magic
+magic -T sky130A.tech sky130_inv.mag &
+
+Condition 2 verified
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/99d9118529cd50842d7c10702fc16bdc53a2c1c1/condition2.png)
 
 
+ Perfrom detailed routing using TritonRoute and explore the routed layout.
+Command to perform routing
+# Check value of 'CURRENT_DEF'
+echo $::env(CURRENT_DEF)
 
+# Check value of 'ROUTING_STRATEGY'
+echo $::env(ROUTING_STRATEGY)
+
+# Command for detailed route using TritonRoute
+run_routing
+Screenshots of routed def
+![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef1.png?raw=true)
+![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef2.png?raw=true)
 
