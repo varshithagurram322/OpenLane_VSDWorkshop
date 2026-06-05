@@ -289,19 +289,19 @@ Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rule
 
 Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
  Change to home directory
-cd
+ cd
 
  Command to download the lab files
-wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+ wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
 
  Since lab file is compressed command to extract it
-tar xfz drc_tests.tgz
+ tar xfz drc_tests.tgz
 
  Change directory into the lab folder
-cd drc_tests
+ cd drc_tests
 
  List all files and directories present in the current directory
-ls -al
+ ls -al
 
  Command to view .magicrc file
 gvim .magicrc
@@ -309,7 +309,7 @@ gvim .magicrc
  Command to open magic tool in better graphics
 magic -d XR &
 screenshot of commands run
-![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-16-52%20-%201.png)
+
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-16-15.png)
 Screenshot of .magicrc file
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-00-43.png)
@@ -317,10 +317,10 @@ Incorrectly implemented difftap.2 simple rule correction
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/910a48c68aa2ca1d39ea91c37f5c969d8e9dddfb/incorrectpoly.png)
 Commands to run in tkcon window
  Loading updated tech file
-tech load sky130A.tech
+ tech load sky130A.tech
 
  Must re-run drc check to see updated drc errors
-drc check
+ drc check
 
 Selecting region displaying the new errors and getting the error messages 
 drc why
@@ -333,18 +333,18 @@ Implementation
     Section 4 tasks:-
 
  1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
-  2. Save the finalized layout with custom name and open it.
-   3.  Generate lef from the layout.
-   4. Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
-   5. Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
-   6. Run openlane flow synthesis with newly inserted custom inverter cell.
-   7. Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
-   8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR         flow.
-   9. Do Post-Synthesis timing analysis with OpenSTA tool.
-   10. Make timing ECO fixes to remove all violations.
-   11. Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
-   12. Post-CTS OpenROAD timing analysis.
-   13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+ 2. Save the finalized layout with custom name and open it.
+ 3.  Generate lef from the layout.
+ 4. Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+ 5. Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+ 6. Run openlane flow synthesis with newly inserted custom inverter cell.
+ 7. Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+ 8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR         flow.
+ 9. Do Post-Synthesis timing analysis with OpenSTA tool.
+10. Make timing ECO fixes to remove all violations.
+ 11. Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+ 12. Post-CTS OpenROAD timing analysis.
+13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
 
 Section 4 - Tasks
 
@@ -358,7 +358,7 @@ Conditions to be verified before moving forward with custom designed cell layout
 
 Commands to open the custom inverter layout
 
- Change directory to vsdstdcelldesign
+ #Change directory to vsdstdcelldesign
 cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 
  Command to open custom inverter layout in magic
@@ -382,7 +382,7 @@ echo $::env(CURRENT_DEF)
 echo $::env(ROUTING_STRATEGY)
 
  Command for detailed route using TritonRoute
-run_routing
+ run_routing
 Screenshots of routed def
 ![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef1.png?raw=true)
 ![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef2.png?raw=true)
