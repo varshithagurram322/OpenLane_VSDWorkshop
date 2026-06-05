@@ -253,7 +253,7 @@ Commands for ngspice simulation
 # Command to directly load spice file for simulation to ngspice
 ngspice sky130_inv.spice
 
-# Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+ Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
 plot y vs time a
 
 Screenshots of ngspice run
@@ -266,25 +266,25 @@ Screenshots of ngspice run
 Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
 
 Commands to download and view the corrupted skywater process magic tech file and associated files to perform drc corrections
-# Change to home directory
+ Change to home directory
 cd
 
-# Command to download the lab files
+ Command to download the lab files
 wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
 
-# Since lab file is compressed command to extract it
+ Since lab file is compressed command to extract it
 tar xfz drc_tests.tgz
 
-# Change directory into the lab folder
+ Change directory into the lab folder
 cd drc_tests
 
-# List all files and directories present in the current directory
+ List all files and directories present in the current directory
 ls -al
 
-# Command to view .magicrc file
+ Command to view .magicrc file
 gvim .magicrc
 
-# Command to open magic tool in better graphics
+ Command to open magic tool in better graphics
 magic -d XR &
 Screenshot of .magicrc file
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/fc5710a01ba9ee0bd613a21f2e8f3970b6e281b5/magicrc.png)
@@ -340,10 +340,10 @@ Conditions to be verified before moving forward with custom designed cell layout
 
 Commands to open the custom inverter layout
 
-# Change directory to vsdstdcelldesign
+ Change directory to vsdstdcelldesign
 cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 
-# Command to open custom inverter layout in magic
+ Command to open custom inverter layout in magic
 magic -T sky130A.tech sky130_inv.mag &
 
 Condition 2 verified
@@ -352,13 +352,13 @@ Condition 2 verified
 
  Perfrom detailed routing using TritonRoute and explore the routed layout.
 Command to perform routing
-# Check value of 'CURRENT_DEF'
+ Check value of 'CURRENT_DEF'
 echo $::env(CURRENT_DEF)
 
-# Check value of 'ROUTING_STRATEGY'
+ Check value of 'ROUTING_STRATEGY'
 echo $::env(ROUTING_STRATEGY)
 
-# Command for detailed route using TritonRoute
+ Command for detailed route using TritonRoute
 run_routing
 Screenshots of routed def
 ![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/4292d5f35540d2a962022927bfbaeb613c1d2a10/routeddef1.png?raw=true)
