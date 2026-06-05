@@ -234,7 +234,7 @@ Section 3 tasks:-
     5.Post-layout ngspice simulations.
     6.Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
     
- Section 3 - Task  files, reports and logs can be found in the following folder:
+ Section 3 - 
  1. Clone custom inverter standard cell design from github repository
     ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/9025e0889bfe7596f568a64bf64e14ab1965d205/Screenshot%20from%202026-06-05%2017-07-23.png)
  2. Load the custom inverter layout in magic and explore.
