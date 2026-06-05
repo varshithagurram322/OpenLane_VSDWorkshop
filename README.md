@@ -190,7 +190,7 @@ Screenshots of floorplan def in magic
 Equidistant placement of ports
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/49eb7d65118f33bfd9188cc62615e14d0dafd290/Screenshot%20from%202026-06-05%2015-47-12.png)
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/d0d0defb6d056cad358a0fc8a83a5a124af5e21f/Screenshot%20from%202026-06-05%2015-50-38.png)
-4. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
+2. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
 
 Command to run placement
 
@@ -200,7 +200,7 @@ run_placement
 Screenshots of placement run
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/72a044a00220dd7e47855a879120754f5a5d42b3/Screenshot%20from%202026-06-05%2018-14-00.png)
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/27c2e34d992e462707a596b910ab3de2fcf704d9/Screenshot%20from%202026-06-05%2018-14-06.png)
-5.Load generated placement def in magic tool and explore the placement.
+3.Load generated placement def in magic tool and explore the placement.
 Commands to load placement def in magic in another terminal
 Change directory to path containing generated placement def
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
@@ -232,28 +232,49 @@ Section 3 tasks:-
     4.Editing the spice model file for analysis through simulation.
     5.Post-layout ngspice simulations.
     6.Find problem in the DRC section of the old magic tech file for the skywater process and fix them.
-
-Section 3 - Tasks 1 to 5 files, reports and logs can be found in the following folder:
-
-Section 3 - Tasks 1 to 5 (vsdstdcelldesign)
-
- 
- Section 3 - Task 6 files, reports and logs can be found in the following folder:
+    
+ Section 3 - Task  files, reports and logs can be found in the following folder:
  1. Clone custom inverter standard cell design from github repository
     ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/9025e0889bfe7596f568a64bf64e14ab1965d205/Screenshot%20from%202026-06-05%2017-07-23.png)
  2. Load the custom inverter layout in magic and explore.
 Screenshot of custom inverter layout in magic
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/d63a1c54e93decb74b196236da0f96879825f801/Screenshot%20from%202026-06-05%2017-23-43.png)
-polysilicon identified
+NMOS and PMOS identified
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/9c0c33d79e9887c27077356c135c0c38a7b52338/Screenshot%20from%202026-06-05%2023-55-55%20-%201.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/9c0c33d79e9887c27077356c135c0c38a7b52338/Screenshot%20from%202026-06-05%2023-56-12.png)
+PMOS source connectivity to VDD (here VPWR) verified
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/671e31f47b0d3ffa2748ec9bb4d5c1d760060249/Screenshot%20from%202026-06-05%2023-57-37.png)
+NMOS source connectivity to VSS (here VGND) verified
+![](https://github.com/varshithagurram322/OpenLane_VSDWorkshop/blob/main/Screenshot%20from%202026-06-05%2023-57-45.png?raw=true)
+3.Spice extraction of inverter in magic.
+Commands for spice extraction of the custom inverter layout to be used in tkcon window of magic
+ Check current directory
+pwd
 
-3. Post-layout ngspice simulations.
+ Extraction command to extract to .ext format
+extract all
+
+ Before converting ext to spice this command enable the parasitic extraction also
+ext2spice cthresh 0 rthresh 0
+
+Converting to ext to spice
+ext2spice
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/f57af883626c290d28ade49a45f2d5e754658fa9/Screenshot%20from%202026-06-06%2000-02-57.png)
+Screenshot of created spice file
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/e78776ce7cb353768d2618a5fcc57fafbb1deabb/Screenshot%20from%202026-06-06%2000-02-46.png)
+4.Editing the spice model file for analysis through simulation.
+Measuring unit distance in layout grid
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/16af20f6993fbcdacb1b4119b1f4780fbd94aeb2/Screenshot%20from%202026-06-06%2000-26-54.png)
+
+
+5. Post-layout ngspice simulations.
 
 Commands for ngspice simulation
 
-# Command to directly load spice file for simulation to ngspice
+Command to directly load spice file for simulation to ngspice
 ngspice sky130_inv.spice
 
- Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
+Now that we have entered ngspice with the simulation spice file loaded we just have to load the plot
 plot y vs time a
 
 Screenshots of ngspice run
@@ -286,10 +307,23 @@ gvim .magicrc
 
  Command to open magic tool in better graphics
 magic -d XR &
+screenshot of commands run
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-16-52%20-%201.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-16-15.png)
 Screenshot of .magicrc file
-![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/fc5710a01ba9ee0bd613a21f2e8f3970b6e281b5/magicrc.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/123c67e9f88ef0e2f68b4c00675570932ac74782/Screenshot%20from%202026-06-06%2002-00-43.png)
 Incorrectly implemented difftap.2 simple rule correction
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/910a48c68aa2ca1d39ea91c37f5c969d8e9dddfb/incorrectpoly.png)
+Commands to run in tkcon window
+ Loading updated tech file
+tech load sky130A.tech
+
+ Must re-run drc check to see updated drc errors
+drc check
+
+Selecting region displaying the new errors and getting the error messages 
+drc why
+[](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/5aa1481f67c3bf87ab72d8b7ba1c282168717a05/Screenshot%20from%202026-06-06%2002-24-59.png)
 
 Section 4 - Pre-layout timing analysis and importance of good clock tree
 Theory
@@ -313,7 +347,7 @@ Implementation
 
     Section 4 - Tasks 1 to 4 files, reports and logs can be found in the following folder:
 
-Section 4 - Tasks 1 to 4 (vsdstdcelldesign)
+
 
     Section 4 - Task 4 files, reports and logs can be found in the following folder:
 
@@ -345,11 +379,16 @@ cd Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign
 
  Command to open custom inverter layout in magic
 magic -T sky130A.tech sky130_inv.mag &
+condition 1 verified
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/19d331119b11a60bf0b805f3d9cf3ff5024c2e8b/Screenshot%20from%202026-06-06%2002-35-54.png)
 
 Condition 2 verified
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/99d9118529cd50842d7c10702fc16bdc53a2c1c1/condition2.png)
 
-
+# Now we are ready to run placement
+run_placement
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/567f25336b7f54960e4101931fc26a0d075928ac/Screenshot%20from%202026-06-06%2002-50-58.png)
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/84e2929aef561d997f84fed1bec96f535c08f4c2/Screenshot%20from%202026-06-06%2002-51-08.png)
  Perfrom detailed routing using TritonRoute and explore the routed layout.
 Command to perform routing
  Check value of 'CURRENT_DEF'
