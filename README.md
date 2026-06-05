@@ -181,6 +181,7 @@ run_synthesis
 
 - Now we can run floorplan
 run_floorplan
+![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/1164e69e7cccd0a9bc54abcb40a70fe5715ab968/Screenshot%20from%202026-06-06%2002-44-48.png)
 
 1. Calculate the die area in microns from the values in floorplan def.
 
