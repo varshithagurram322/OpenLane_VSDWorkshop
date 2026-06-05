@@ -99,8 +99,9 @@ Section 1 tasks:-
 2. Calculate the flop ratio.
 
    Flop Ratio=Number of D flipflops/Total number of cells
+   
    Percentage of Dff's=Flop Ratio*100
-    All section 1 logs, reports and results can be found in following run folder:
+   
 
 Section 1
 1. Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
@@ -140,7 +141,9 @@ Screenshots of synthesis statistics report file with required values highlighted
 ![[](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/356d3a30d08224a6b260ea636f428317fea7da17/Screenshot%20from%202026-06-03%2000-40-41.png)
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/356d3a30d08224a6b260ea636f428317fea7da17/Screenshot%20from%202026-06-03%2000-40-56.png)
 Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
 Flop Ratio = 1613/ 14876 = 0.108429685
+
 Percentage of Dff's = 0.108429685 ∗ 100 = 10.84296854% 
 
 #Section 2 - Good floorplan vs bad floorplan and introduction to library
@@ -189,10 +192,15 @@ Screenshot of contents of floorplan def
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/8412348413054495fda5688424a09b05fe05084a/Screenshot%20from%202026-06-05%2019-21-35.png)
 According to the floorplan def
                    1000 unit Distance=1 Micron
+
           Die width in unit distance=660685-0=660685
+          
           Die height in unit distance=671405-0=671405
+          
           Distance in microns=value in unit distance/1000
+          
           Die width in microns=660685/1000=660.685 Microns
+          
           Die height iin microns=671405/1000 Microns
           
 Screenshots of floorplan def in magic
@@ -200,30 +208,13 @@ Screenshots of floorplan def in magic
 Equidistant placement of ports
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/49eb7d65118f33bfd9188cc62615e14d0dafd290/Screenshot%20from%202026-06-05%2015-47-12.png)
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/d0d0defb6d056cad358a0fc8a83a5a124af5e21f/Screenshot%20from%202026-06-05%2015-50-38.png)
-2. Run 'picorv32a' design congestion aware placement using OpenLANE flow and generate necessary outputs.
-
-Command to run placement
-
-# Congestion aware placement by default
-run_placement
-
-Screenshots of placement run
-![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/72a044a00220dd7e47855a879120754f5a5d42b3/Screenshot%20from%202026-06-05%2018-14-00.png)
-![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/27c2e34d992e462707a596b910ab3de2fcf704d9/Screenshot%20from%202026-06-05%2018-14-06.png)
-3.Load generated placement def in magic tool and explore the placement.
-Commands to load placement def in magic in another terminal
-Change directory to path containing generated placement def
-cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/17-03_12-06/results/placement/
-
-Command to load the placement def in magic tool
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 Screenshots of floorplan def in magic
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/e55f31e4f717c48fd5b7e69314683b80efabdc52/Screenshot%20from%202026-06-05%2016-33-49.png)
 Commands to exit from current run
-Exit from OpenLANE flow
+#Exit from OpenLANE flow
 exit
 
-Exit from OpenLANE flow docker sub-system
+#Exit from OpenLANE flow docker sub-system
 exit
 Exit from OpenLANE flow
 exit
@@ -341,39 +332,22 @@ Implementation
 
     Section 4 tasks:-
 
-    Fix up small DRC errors and verify the design is ready to be inserted into our flow.
-    Save the finalized layout with custom name and open it.
-    Generate lef from the layout.
-    Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
-    Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
-    Run openlane flow synthesis with newly inserted custom inverter cell.
-    Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
-    Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR flow.
-    Do Post-Synthesis timing analysis with OpenSTA tool.
-    Make timing ECO fixes to remove all violations.
-    Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
-    Post-CTS OpenROAD timing analysis.
-    Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
+ 1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
+  2. Save the finalized layout with custom name and open it.
+   3.  Generate lef from the layout.
+   4. Copy the newly generated lef and associated required lib files to 'picorv32a' design 'src' directory.
+   5. Edit 'config.tcl' to change lib file and add the new extra lef into the openlane flow.
+   6. Run openlane flow synthesis with newly inserted custom inverter cell.
+   7. Remove/reduce the newly introduced violations with the introduction of custom inverter cell by modifying design parameters.
+   8. Once synthesis has accepted our custom inverter we can now run floorplan and placement and verify the cell is accepted in PnR         flow.
+   9. Do Post-Synthesis timing analysis with OpenSTA tool.
+   10. Make timing ECO fixes to remove all violations.
+   11. Replace the old netlist with the new netlist generated after timing ECO fix and implement the floorplan, placement and cts.
+   12. Post-CTS OpenROAD timing analysis.
+   13. Explore post-CTS OpenROAD timing analysis by removing 'sky130_fd_sc_hd__clkbuf_1' cell from clock buffer list variable 'CTS_CLK_BUFFER_LIST'.
 
-    Section 4 - Tasks 1 to 4 files, reports and logs can be found in the following folder:
+Section 4 - Tasks
 
-
-
-    Section 4 - Task 4 files, reports and logs can be found in the following folder:
-
-Section 4 - Task 4 (src)
-
-    Section 4 - Task 5 files, reports and logs can be found in the following folder:
-
-Section 4 - Task 5 (picorv32a)
-
-    Section 4 - Tasks 6 to 8 & 11 to 13 logs, reports and results can be found in following run folder:
-
-Section 4 - Tasks 6 to 8 & 11 to 13 Run (24-03_10-03)
-
-    Section 4 - Tasks 9 to 11 logs, reports and results can be found in following run folder:
-
-Section 4 - Tasks 9 to 11 Run (25-03_18-52)
 1. Fix up small DRC errors and verify the design is ready to be inserted into our flow.
 
 Conditions to be verified before moving forward with custom designed cell layout:
