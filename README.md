@@ -210,6 +210,7 @@ According to the floorplan def
           
 Screenshots of floorplan def in magic
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/1787786932ed2da710dc61423354d469141889c8/Screenshot%20from%202026-06-05%2015-38-50.png)
+
 Equidistant placement of ports
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/49eb7d65118f33bfd9188cc62615e14d0dafd290/Screenshot%20from%202026-06-05%2015-47-12.png)
 ![](https://raw.githubusercontent.com/varshithagurram322/OpenLane_VSDWorkshop/d0d0defb6d056cad358a0fc8a83a5a124af5e21f/Screenshot%20from%202026-06-05%2015-50-38.png)
